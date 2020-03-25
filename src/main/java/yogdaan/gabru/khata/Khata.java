@@ -1,6 +1,6 @@
 package yogdaan.gabru.khata;
 
 public class Khata {
-	public static void main(String[] args) {
-	}
+
+	public static void main(String[] args) {}
 }

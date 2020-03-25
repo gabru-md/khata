@@ -7,6 +7,8 @@
 	 <description>Personal Expense Manager &amp; Planner</description>
 	 
 	 <properties>
+	 	<basepom.check.skip-prettier>false</basepom.check.skip-prettier>
+	 	<plugin.prettier.goal>write</plugin.prettier.goal>
 	  	<maven.compiler.source>1.8</maven.compiler.source>
 	   	<maven.compiler.target>1.8</maven.compiler.target>
 		<exec.mainClass>yogdaan.gabru.khata.Khata</exec.mainClass>
@@ -29,12 +31,54 @@
     
     <build>
         <finalName>maven-unit-test</finalName>
-        <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-surefire-plugin</artifactId>
-              <version>2.22.0</version>
-          </plugin>
-        </plugins>
+        <pluginManagement>
+	        <plugins>
+	          <plugin>
+	              <groupId>org.apache.maven.plugins</groupId>
+	              <artifactId>maven-surefire-plugin</artifactId>
+	              <version>2.22.0</version>
+	          </plugin>
+	          <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-checkstyle-plugin</artifactId>
+		        <version>2.17</version>
+		        <executions>
+		          <execution>
+		            <id>validate</id>
+		            <goals>
+		              <goal>check</goal>
+		            </goals>
+		            <phase>validate</phase>
+		            <configuration>
+		              <configLocation>${basedir}/src/main/resources/khata-checkstyle.xml</configLocation>
+		              <encoding>UTF-8</encoding>
+		              <consoleOutput>true</consoleOutput>
+		              <failsOnError>true</failsOnError>
+		            </configuration>
+		          </execution>
+		        </executions>
+		      </plugin>
+		      <plugin>
+			      <groupId>com.hubspot.maven.plugins</groupId>
+			      <artifactId>prettier-maven-plugin</artifactId>
+			      <version>0.7</version>
+			      <configuration>
+			        <printWidth>90</printWidth>
+			        <tabWidth>2</tabWidth>
+			        <useTabs>true</useTabs>
+			        <ignoreConfigFile>true</ignoreConfigFile>
+			        <ignoreEditorConfig>true</ignoreEditorConfig>
+			      </configuration>
+			      <executions>
+			        <execution>
+			          <phase>validate</phase>
+			          <goals>
+			            <goal>check</goal>
+			          </goals>
+			        </execution>
+			      </executions>      
+			    </plugin>
+	        </plugins>
+        </pluginManagement>
     </build>
 	</project>

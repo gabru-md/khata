@@ -5,24 +5,24 @@ public class Attribute {
 	private Type type;
 	private boolean notNull;
 	private boolean primaryKey;
-	
-	public static enum Type {
+
+	public enum Type {
 		INT,
 		STRING,
 		DOUBLE
 	}
-	
+
 	public Attribute(String name, Type type, boolean notNull, boolean primaryKey) {
 		this.name = name;
 		this.type = type;
 		this.notNull = notNull;
 		this.primaryKey = primaryKey;
 	}
-	
+
 	public Attribute(String name, Type type) {
 		this(name, type, false, false);
 	}
-	
+
 	public Attribute isNotNull() {
 		this.notNull = true;
 		return this;
@@ -32,8 +32,7 @@ public class Attribute {
 		this.primaryKey = true;
 		return this;
 	}
-	
-	
+
 	public String getName() {
 		return name;
 	}
@@ -53,32 +52,26 @@ public class Attribute {
 	public boolean getPrimaryKeyStatus() {
 		return this.primaryKey;
 	}
-	
+
 	public boolean getNotNullStatus() {
 		return this.notNull;
 	}
 
 	private String realise(Type type) {
-		if(type == Type.INT)
-			return "INT";
-		if(type == Type.STRING) 
-			return "CHAR(150)";
-		else
-			return "REAL";
+		if (type == Type.INT) return "INT";
+		if (type == Type.STRING) return "CHAR(150)"; else return "REAL";
 	}
-	
+
 	String build() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(name)
-			.append(" ")
-			.append(realise(type));
-		if(primaryKey) {
+		sb.append(name).append(" ").append(realise(type));
+		if (primaryKey) {
 			sb.append(" PRIMARY KEY");
 		}
-		if(notNull) {
+		if (notNull) {
 			sb.append(" NOT NULL");
 		}
-		
+
 		return sb.toString();
 	}
 }

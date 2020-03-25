@@ -4,9 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import yogdaan.gabru.khata.utils.Errors;
-import yogdaan.gabru.khata.utils.Logger;
 
 class AttributeTest {
 
@@ -14,7 +12,7 @@ class AttributeTest {
 	void setup() {
 		Errors.clearAll();
 	}
-	
+
 	@Test
 	void itChecksForCorrectAttribute() {
 		Attribute attribute = new Attribute("id", Attribute.Type.INT, false, true);
@@ -23,7 +21,7 @@ class AttributeTest {
 		assertTrue(attribute.getPrimaryKeyStatus());
 		assertFalse(attribute.getNotNullStatus());
 	}
-	
+
 	@Test
 	void itChecksCustomAttribute() {
 		Attribute attr = new Attribute("name", Attribute.Type.STRING);
@@ -31,25 +29,24 @@ class AttributeTest {
 		assertEquals(attr.getType(), Attribute.Type.STRING);
 		assertFalse(attr.getPrimaryKeyStatus());
 		assertFalse(attr.getNotNullStatus());
-		
+
 		attr.isNotNull();
 		assertTrue(attr.getNotNullStatus());
-		
+
 		attr.isPrimaryKey();
 		assertTrue(attr.getPrimaryKeyStatus());
 	}
-	
+
 	@Test
 	void itChecksForCorrectBuild() {
 		Attribute attr = new Attribute("name", Attribute.Type.STRING);
 		assertEquals(attr.build(), "name CHAR(150)");
-		
+
 		attr.setName("id");
 		attr.setType(Attribute.Type.INT);
 		assertEquals(attr.build(), "id INT");
-		
+
 		attr.isNotNull().isPrimaryKey();
 		assertEquals(attr.build(), "id INT PRIMARY KEY NOT NULL");
 	}
-
 }

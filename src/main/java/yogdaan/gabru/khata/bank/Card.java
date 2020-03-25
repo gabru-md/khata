@@ -9,26 +9,44 @@ public class Card {
 	private String cardCVV;
 	private String cardExpiry;
 	private String cardProvider;
-	
-	private Card(String cardNumber, String cardName, String cardCVV, String cardExpiry, String cardProvider) throws Exception {
+
+	private Card(
+		String cardNumber,
+		String cardName,
+		String cardCVV,
+		String cardExpiry,
+		String cardProvider
+	)
+		throws Exception {
 		this.cardNumber = Checker.NullSafeCheck(cardNumber);
 		this.cardName = Checker.NullSafeCheck(cardName);
 		this.cardCVV = Checker.NullSafeCheck(cardCVV);
 		this.cardExpiry = Checker.NullSafeCheck(cardExpiry);
 		this.cardProvider = cardProvider;
 	}
-	
+
 	private Card() {}
-	
+
 	public static Card newCard() {
 		return new Card();
 	}
-	
-	public static Card newCard(String cardNumber, String cardName, String cardCVV, String cardExpiry) {
+
+	public static Card newCard(
+		String cardNumber,
+		String cardName,
+		String cardCVV,
+		String cardExpiry
+	) {
 		return newCard(cardNumber, cardName, cardCVV, cardExpiry, null);
 	}
-	
-	public static Card newCard(String cardNumber, String cardName, String cardCVV, String cardExpiry, String cardProvider) {
+
+	public static Card newCard(
+		String cardNumber,
+		String cardName,
+		String cardCVV,
+		String cardExpiry,
+		String cardProvider
+	) {
 		try {
 			Card card = new Card(cardNumber, cardName, cardCVV, cardExpiry, cardProvider);
 			return card;
@@ -77,6 +95,4 @@ public class Card {
 	public void setCardProvider(String cardProvider) {
 		this.cardProvider = cardProvider;
 	}
-	
-	
 }

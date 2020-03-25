@@ -10,28 +10,53 @@ public class Account {
 	private String accountHolderName;
 	private Card card;
 
-	private Account(String accountNumber, String bankName, String accountHolderName, Card card, String accountIdentifier) throws Exception {
+	private Account(
+		String accountNumber,
+		String bankName,
+		String accountHolderName,
+		Card card,
+		String accountIdentifier
+	)
+		throws Exception {
 		this.accountNumber = Checker.NullSafeCheck(accountNumber);
 		this.accountHolderName = Checker.NullSafeCheck(accountHolderName);
 		this.bankName = Checker.NullSafeCheck(bankName);
 		this.card = card;
-		this.accountIdentifier = accountIdentifier == null ? getAndSetUniqueIdentifier() : accountIdentifier;
+		this.accountIdentifier =
+			accountIdentifier == null ? getAndSetUniqueIdentifier() : accountIdentifier;
 	}
-	
-	public static Account createNewAccount(String accountNumber, String bankName, String accountHolderName, Card card) {
+
+	public static Account createNewAccount(
+		String accountNumber,
+		String bankName,
+		String accountHolderName,
+		Card card
+	) {
 		return createNewAccount(accountNumber, bankName, accountHolderName, card, null);
 	}
-	
-	public static Account createNewAccount(String accountNumber, String bankName, String accountHolderName, Card card, String accountIdentifier) {
+
+	public static Account createNewAccount(
+		String accountNumber,
+		String bankName,
+		String accountHolderName,
+		Card card,
+		String accountIdentifier
+	) {
 		try {
-			Account newAccount = new Account(accountNumber, bankName, accountHolderName, card, accountIdentifier);
+			Account newAccount = new Account(
+				accountNumber,
+				bankName,
+				accountHolderName,
+				card,
+				accountIdentifier
+			);
 			return newAccount;
 		} catch (Exception e) {
 			Errors.pushError(e);
 			return null;
 		}
 	}
-	
+
 	public String getAccountIdentifier() {
 		return accountIdentifier;
 	}
@@ -67,9 +92,9 @@ public class Account {
 	public boolean hasCard() {
 		return this.card == null;
 	}
-	
+
 	public Card getCard() {
-		if(!hasCard()) {
+		if (!hasCard()) {
 			return null;
 		}
 		return card;
@@ -78,7 +103,7 @@ public class Account {
 	public void setCard(Card card) {
 		this.card = card;
 	}
-	
+
 	private String getAndSetUniqueIdentifier() {
 		return "0";
 	}

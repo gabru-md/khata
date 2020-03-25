@@ -1,5 +1,3 @@
 package yogdaan.gabru.khata.bank;
 
-public class DebitEntry {
-
-}
+public class DebitEntry {}

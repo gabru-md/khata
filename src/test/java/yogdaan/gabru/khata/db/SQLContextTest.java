@@ -10,5 +10,4 @@ class SQLContextTest {
 	void test() {
 		assertTrue(true);
 	}
-
 }
