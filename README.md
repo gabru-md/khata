@@ -24,7 +24,7 @@ If the above commands show the following message then congratulations you've set
 BUILD SUCCESS
 ```
 And just open the folder into your favourite IDE (Eclipse).
-Check for issues on the issue tracker or contact me at [gabrumdfoss.wordpress.com](gabrumdfoss.wordpress.com).
+Check for issues on the issue tracker or contact me.
 #### Contributing
 Please make sure that you add ro change tests appropriately for any modification that you propose.
 Before submitting a pull request make sure that your tests are passing. Always check that the build succeeds for the following command.
@@ -40,5 +40,5 @@ mvn test
 [Yogdaan](https://github.com/yogdaan)
 
 ### Read & Reach Out
-[gabrumdfoss.wordpress.com](gabrumdfoss.wordpress.com)
+[https://gabrumdfoss.wordpress.com](https://gabrumdfoss.wordpress.com)
 
