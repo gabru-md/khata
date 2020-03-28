@@ -40,13 +40,13 @@ class AttributeTest {
 	@Test
 	void itChecksForCorrectBuild() {
 		Attribute attr = new Attribute("name", Attribute.Type.STRING);
-		assertEquals(attr.build(), "name CHAR(150)");
+		assertEquals(attr.build(), "name char(150)");
 
 		attr.setName("id");
 		attr.setType(Attribute.Type.INT);
-		assertEquals(attr.build(), "id INT");
+		assertEquals(attr.build(), "id integer");
 
 		attr.isNotNull().isPrimaryKey();
-		assertEquals(attr.build(), "id INT PRIMARY KEY NOT NULL");
+		assertEquals(attr.build(), "id integer PRIMARY KEY NOT NULL");
 	}
 }

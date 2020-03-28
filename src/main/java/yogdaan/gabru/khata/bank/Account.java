@@ -1,5 +1,7 @@
 package yogdaan.gabru.khata.bank;
 
+import java.util.ArrayList;
+import java.util.List;
 import yogdaan.gabru.khata.utils.Checker;
 import yogdaan.gabru.khata.utils.Errors;
 
@@ -9,6 +11,10 @@ public class Account {
 	private String bankName;
 	private String accountHolderName;
 	private Card card;
+	private double balance;
+
+	private List<Entry> passbook;
+	private Entry recentEntry;
 
 	private Account(
 		String accountNumber,
@@ -24,6 +30,8 @@ public class Account {
 		this.card = card;
 		this.accountIdentifier =
 			accountIdentifier == null ? getAndSetUniqueIdentifier() : accountIdentifier;
+		this.setBalance(0.0);
+		this.passbook = new ArrayList<>();
 	}
 
 	public static Account createNewAccount(
@@ -102,6 +110,36 @@ public class Account {
 
 	public void setCard(Card card) {
 		this.card = card;
+	}
+
+	public double getBalance() {
+		return this.balance;
+	}
+
+	private void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	private void updateBalance(double incrDecrBal) {
+		this.balance += incrDecrBal;
+	}
+
+	public void addEntry(Entry entry) {
+		this.passbook.add(entry);
+		this.updateRecent(entry);
+		this.updateBalance(entry.getCost());
+	}
+
+	private void updateRecent(Entry entry) {
+		this.recentEntry = entry;
+	}
+
+	public Entry getRecentEntry() {
+		return this.recentEntry;
+	}
+
+	public List<Entry> getPassbook() {
+		return this.passbook;
 	}
 
 	private String getAndSetUniqueIdentifier() {

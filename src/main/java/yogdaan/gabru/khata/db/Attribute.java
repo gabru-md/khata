@@ -58,8 +58,8 @@ public class Attribute {
 	}
 
 	private String realise(Type type) {
-		if (type == Type.INT) return "INT";
-		if (type == Type.STRING) return "CHAR(150)"; else return "REAL";
+		if (type == Type.INT) return "integer";
+		if (type == Type.STRING) return "char(150)"; else return "real";
 	}
 
 	String build() {

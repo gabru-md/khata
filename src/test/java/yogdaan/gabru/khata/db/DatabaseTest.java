@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import yogdaan.gabru.khata.db.queries.Create;
 import yogdaan.gabru.khata.utils.Errors;
 import yogdaan.gabru.khata.utils.Logger;
 
@@ -40,11 +41,13 @@ class DatabaseTest {
 		Database db = Database.getTestSQLDatabase();
 		assertTrue(Errors.ok());
 		assertNotNull(db);
-
-		String sqlQuery =
-			"create table bank(" + "id integer PRIMARY KEY," + "name char(50)" + ");";
-
-		int result = db.runICUQuery(sqlQuery);
+		int result = db.runICUQuery(Create.createBankTable);
+		assertTrue(Errors.ok());
+		assertEquals(result, 0);
+		result = db.runICUQuery(Create.createAccountsTable);
+		assertTrue(Errors.ok());
+		assertEquals(result, 0);
+		result = db.runICUQuery(Create.createCardsTable);
 		assertTrue(Errors.ok());
 		assertEquals(result, 0);
 	}
