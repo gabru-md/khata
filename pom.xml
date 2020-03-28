@@ -65,7 +65,7 @@
 			      <configuration>
 			        <printWidth>90</printWidth>
 			        <tabWidth>2</tabWidth>
-			        <useTabs>true</useTabs>
+			        <useTabs>false</useTabs>
 			        <ignoreConfigFile>true</ignoreConfigFile>
 			        <ignoreEditorConfig>true</ignoreEditorConfig>
 			      </configuration>

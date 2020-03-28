@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 class SQLContextTest {
 
-	@Test
-	void test() {
-		assertTrue(true);
-	}
+  @Test
+  void test() {
+    assertTrue(true);
+  }
 }
